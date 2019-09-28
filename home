@@ -25,6 +25,12 @@
   Cell-Phone:  
   <input type="text">
   <br><br>
+  Password:
+  <input type="text">
+  <br><br>
+  Confirm Passowrd:
+  <input type="text">
+  <br><br>
 
   Sign Up: <input type="Submit">
 </form> 
