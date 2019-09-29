@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LogIn</title>
+</head>
+<body>
+<h1><div align="center">Log in Below</div></h1>
+
+
+<form>
+<div align="center">
+  Username:
+  <input type="text">
+  <br><br>
+  Password:
+  <input type="text">
+  <br><br>
+  <input type="checkbox" checked="checked" name="remember"> Remember me
+  <br><br>
+  Login: <input type="Submit">
+</div>
+</form> 
+
+
+</body>
+</html>
