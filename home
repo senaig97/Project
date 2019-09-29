@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>SignUp</title>
 </head>
 <body>
 <h1>Welcome to Smartsplit! Sign Up Below</h1>
 
-<ul style="list-style-type:none;">
+<ul style="list-style-type:disc;">
   <li>Track balances</li>
   <li>Split by % or $</li>
   <li>Multiple Currencies</li>
 </ul>
 
 <form>
+<div align="left">
   First Name:
   <input type="text">
   <br><br>
   Last Name:  
+  <input type="text">
+  <br><br>
+  Username:
   <input type="text">
   <br><br>
   Email:       
@@ -28,11 +32,12 @@
   Password:
   <input type="text">
   <br><br>
-  Confirm Passowrd:
+  Confirm Password
   <input type="text">
   <br><br>
 
   Sign Up: <input type="Submit">
+</div>
 </form> 
 
 
