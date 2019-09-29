@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EvenSplit</title>
+</head>
+<body>
+<h1>Evenly split payments by filling out the fields below</h1>
+
+<form>
+<div align="left">
+  Total Cost:
+  <input type="text">
+  <br><br>
+  # of People:
+  <input type="text">
+  <br><br>
+  
+
+  Calculate: <input type="Submit">
+</div>
+</form> 
+
+
+</body>
+</html>
