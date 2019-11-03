@@ -1,7 +1,10 @@
 from flask import Flask
 from config import Config
+from flask_sqlalchemy import SQLAlchemy
 
 SmartSplitApp = Flask(__name__)
 SmartSplitApp.config.from_object(Config)
 
-from app import routes
+db = SQLAlchemy(SmartSplitApp)
+
+from app import routes, models

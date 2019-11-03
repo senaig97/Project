@@ -44,7 +44,7 @@ def logout():
     return redirect(url_for("projects"))
 
 
-@SmartSplitApp.route('/editcredentials')
+@SmartSplitApp.route('/editcredentials', methods=["GET", "POST"])
 def editcredentials():
     form = EditCredsForm()
     if form.validate_on_submit():
