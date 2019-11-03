@@ -1,7 +1,7 @@
 from app import SmartSplitApp
 from flask import request, session, redirect, url_for, render_template, flash, g
 from flask import app
-from app.form import EditCredsForm, LoginForm, SplitForm, RegistrationForm
+from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm
 
 @SmartSplitApp.route("/")
 
@@ -21,7 +21,7 @@ def register():
 def login():
     g.selected_tab = "login"
 
-    form = LoginForm
+    form = LoginForm()
     if request.method == "POST":
         if request.form["username"] != app.config["USERNAME"]:
             error = "Invalid login credentials"
@@ -44,9 +44,15 @@ def logout():
     return redirect(url_for("projects"))
 
 
-@SmartSplitApp.route('/editCredentials')
-def editCredentials():
+@SmartSplitApp.route('/editcredentials')
+def editcredentials():
     form = EditCredsForm()
     if form.validate_on_submit():
         pass
     return render_template('editCredentails.html', form=form)
+
+
+@SmartSplitApp.route('/smartsplit')
+def smartsplit():
+    # code for smart split to go here
+    form = SplitForm()
