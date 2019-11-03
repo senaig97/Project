@@ -21,7 +21,7 @@ def register():
 def login():
     g.selected_tab = "login"
 
-    form = None
+    form = LoginForm
     if request.method == "POST":
         if request.form["username"] != app.config["USERNAME"]:
             error = "Invalid login credentials"
