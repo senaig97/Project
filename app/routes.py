@@ -1,7 +1,9 @@
-from app import SmartSplitApp
+from app import SmartSplitApp, db
 from flask import request, session, redirect, url_for, render_template, flash, g
 from flask import app
 from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm
+from app.models import User
+
 
 @SmartSplitApp.route("/")
 
@@ -46,9 +48,14 @@ def logout():
 
 @SmartSplitApp.route('/editcredentials', methods=["GET", "POST"])
 def editcredentials():
-    form = EditCredsForm()
-    if form.validate_on_submit():
-        pass
+    form = EditCredsForm(request.form)
+    if request.method == 'POST'and form.validate():
+        user = User(form.newUsername.data, form.newPassword)
+        db.session.add(user)
+        flash('Credentials successfully edited')
+        return redirect(url_for('/home'))
+    # if form.validate_on_submit():
+    #     flash('Credentials successfully edited')
     return render_template('editCredentails.html', form=form)
 
 
