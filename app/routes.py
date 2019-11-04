@@ -1,53 +1,61 @@
 from app import SmartSplitApp, db
-from flask import request, session, redirect, url_for, render_template, flash, g
-from flask import app
+from flask import render_template, flash, redirect, url_for, request
 from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm
 from app.models import User
+from flask_login import login_user, logout_user, current_user, login_required
+from werkzeug.urls import url_parse
 
 
-@SmartSplitApp.route("/")
-
-
-@SmartSplitApp.route("/home")
+@SmartSplitApp.route('/')
+@SmartSplitApp.route('/home')
 def home():
     return render_template("Home.html")
 
 
-@SmartSplitApp.route('/register')
-def register():
-    form = RegistrationForm()
-    return render_template('Register.html', form=form)
-
-
 @SmartSplitApp.route("/login", methods=["GET", "POST"])
 def login():
-    g.selected_tab = "login"
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
 
     form = LoginForm()
-    if request.method == "POST":
-        if request.form["username"] != app.config["USERNAME"]:
-            error = "Invalid login credentials"
-        elif request.form["password"] != app.config["PASSWORD"]:
-            error = "Invalid login credentials"
-        else:
-            session["logged_in"] = True
-            flash("You are logged in")
-            if session.get("project"):
-                return redirect(url_for("home"))
-            return redirect(url_for("projects"))
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Incorrect username or password')
+            return redirect(url_for('login'))
+        login_user(user, remember=form.remember_me.data)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('home')
 
-    return render_template("LogIn.html", form=form)
+        return redirect(next_page)
+    return render_template('login.html',title = 'Log in', form=form)
 
 
 @SmartSplitApp.route("/logout")
 def logout():
-    session.pop("logged_in", None)
-    flash("You were logged out")
-    return redirect(url_for("projects"))
+    logout_user()
+    return redirect(url_for('home'))
 
 
-@SmartSplitApp.route('/editcredentials', methods=["GET", "POST"])
-def editcredentials():
+@SmartSplitApp.route('/register')
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('User successfully registered')
+        return redirect(url_for('login'))
+    return render_template('register.html', title = 'Register', form=form)
+
+
+@SmartSplitApp.route('/editCredentials')
+@login_required
+def editCredentials():
     form = EditCredsForm(request.form)
     if request.method == 'POST'and form.validate():
         user = User(form.newUsername.data, form.newPassword)
@@ -59,7 +67,9 @@ def editcredentials():
     return render_template('editCredentails.html', form=form)
 
 
-@SmartSplitApp.route('/smartsplit')
-def smartsplit():
-    # code for smart split to go here
+@SmartSplitApp.route('/evensplit', methods=['GET', 'POST'])
+def evensplit():
     form = SplitForm()
+    if form.validate_on_submit():
+        form.splitbill.data = form.cost.data / form.people.data
+    return render_template('evensplit.html', form=form)
