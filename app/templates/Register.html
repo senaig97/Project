@@ -45,6 +45,9 @@ button:hover {
                  <div class="control-group">
                  <div class="controls">
                  <input type="text" id="username" name="username" class="input-xlarge" placeholder="Enter Username" value="{{ request.form.username }}"required>
+                 {% for error in username %}
+                     <span style="color: red;">[{{ error }}]</span>
+                 {% endfor %}
                  </div>
                  </div>
 
@@ -53,6 +56,20 @@ button:hover {
           <input type="password" id="password" name="password" class="input-xlarge"
             placeholder="Enter Password" value="{{ request.form.password }}"
             required>
+            {% for error in password %}
+                 <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="password" id="confirmpassword" name="confirmpassword" class="input-xlarge"
+            placeholder="Confirm Password" value="{{ request.form.password }}"
+            required>
+            {% for error in confirmpassword %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </div>
     </div>
 
@@ -61,6 +78,9 @@ button:hover {
           <input type="email" id="email" name="email" class="input-xlarge"
             placeholder="Enter Email" value="{{ request.form.username }}"
             required>
+            {% for error in email %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </div>
     </div>
 
