@@ -38,7 +38,7 @@ def logout():
     return redirect(url_for('home'))
 
 
-@SmartSplitApp.route('/register')
+@SmartSplitApp.route('/register', methods=["GET", "POST"])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -53,7 +53,7 @@ def register():
     return render_template('register.html', title = 'Register', form=form)
 
 
-@SmartSplitApp.route('/editCredentials')
+@SmartSplitApp.route('/editCredentials', methods=["GET", "POST"])
 @login_required
 def editCredentials():
     form = EditCredsForm(request.form)
