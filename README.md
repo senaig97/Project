@@ -1,3 +1,3 @@
-# Project
+# SmartSplit
 Group Project for CMPE 131
 Start
