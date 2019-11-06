@@ -1,7 +1,3 @@
-# NOTE
-# Most of this is just to test if Register works since the main app py file isn't up yet
-# Things to do include username/password/email validation, and setup of the database
-
 from flask import Flask, render_template, flash
 
 from flask_wtf import FlaskForm
