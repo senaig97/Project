@@ -1,6 +1,6 @@
 from app import SmartSplitApp, db
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm
+from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm, CustomSplitForm
 from app.models import User
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
@@ -29,7 +29,7 @@ def login():
             next_page = url_for('home')
 
         return redirect(next_page)
-    return render_template('login.html', title='Log in', form=form)
+    return render_template('login.html',title = 'Log in', form=form)
 
 
 @SmartSplitApp.route("/logout")
@@ -50,26 +50,21 @@ def register():
         db.session.commit()
         flash('User successfully registered')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title = 'Register', form=form)
 
 
-@SmartSplitApp.route('/editCredentials', methods=['GET', 'POST'])
+@SmartSplitApp.route('/editCredentials')
 @login_required
 def editCredentials():
     form = EditCredsForm(request.form)
-    if request.method == 'POST' and form.validate_on_submit():
-        user = current_user
-        user.password = form.password.data
+    if request.method == 'POST'and form.validate():
+        user = User(form.newUsername.data, form.newPassword)
         db.session.add(user)
-        db.session.commit()
-        flash('Password has been updated', 'success')
-        return redirect(url_for('/login'))
-    # if request.method == 'POST' and form.validate():
-    #     user = User(form.newUsername.data, form.newPassword)
-    #     db.session.add(user)
+        flash('Credentials successfully edited')
+        return redirect(url_for('/home'))
+    # if form.validate_on_submit():
     #     flash('Credentials successfully edited')
-    #     return redirect(url_for('/home'))
-    return render_template('editCredentails.html', title='Edit Credentials', form=form)
+    return render_template('editCredentails.html', form=form)
 
 
 @SmartSplitApp.route('/evensplit', methods=['GET', 'POST'])
@@ -77,4 +72,9 @@ def evensplit():
     form = SplitForm()
     if form.validate_on_submit():
         form.splitbill.data = form.cost.data / form.people.data
-    return render_template('evensplit.html', form=form)
+    return render_template('evensplit.html', splitbill=form.splitbill.data, form=form)
+
+@SmartSplitApp.route('/customsplit', methods=['GET', 'POST'])
+def customsplit():
+    form = CustomSplitForm()
+    return render_template('CustomSplit.html', form=form)
