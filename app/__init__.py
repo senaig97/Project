@@ -8,10 +8,9 @@ SmartSplitApp.config.from_object(Config)
 
 db = SQLAlchemy(SmartSplitApp)
 
-# This necessary?
-from app.models import User
+# from app.models import User
 db.create_all()
-db.session.commit()
+# db.session.commit()
 
 login = LoginManager(SmartSplitApp)
 
