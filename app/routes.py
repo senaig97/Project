@@ -29,7 +29,7 @@ def login():
             next_page = url_for('home')
 
         return redirect(next_page)
-    return render_template('login.html', title='Log in', form=form)
+    return render_template('login.html',title = 'Log in', form=form)
 
 
 @SmartSplitApp.route("/logout")
@@ -38,7 +38,7 @@ def logout():
     return redirect(url_for('home'))
 
 
-@SmartSplitApp.route('/register')
+@SmartSplitApp.route('/register', methods=["GET", "POST"])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -50,26 +50,21 @@ def register():
         db.session.commit()
         flash('User successfully registered')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title = 'Register', form=form)
 
 
-@SmartSplitApp.route('/editCredentials', methods=['GET', 'POST'])
+@SmartSplitApp.route('/editCredentials', methods=["GET", "POST"])
 @login_required
 def editCredentials():
     form = EditCredsForm(request.form)
-    if request.method == 'POST' and form.validate_on_submit():
-        user = current_user
-        user.password = form.password.data
+    if request.method == 'POST'and form.validate():
+        user = User(form.newUsername.data, form.newPassword)
         db.session.add(user)
-        db.session.commit()
-        flash('Password has been updated', 'success')
-        return redirect(url_for('/login'))
-    # if request.method == 'POST' and form.validate():
-    #     user = User(form.newUsername.data, form.newPassword)
-    #     db.session.add(user)
+        flash('Credentials successfully edited')
+        return redirect(url_for('/home'))
+    # if form.validate_on_submit():
     #     flash('Credentials successfully edited')
-    #     return redirect(url_for('/home'))
-    return render_template('editCredentails.html', title='Edit Credentials', form=form)
+    return render_template('editCredentails.html', form=form)
 
 
 @SmartSplitApp.route('/evensplit', methods=['GET', 'POST'])
