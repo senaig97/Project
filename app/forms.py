@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
 
 
 class EditCredsForm(FlaskForm):
-    newUsername = StringField('New Username')
+    # newUsername = StringField('New Username')
     newPassword = PasswordField('New Password', validators=[DataRequired()])
     submit = SubmitField('Confirm')
 
