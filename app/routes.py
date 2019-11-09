@@ -38,7 +38,7 @@ def logout():
     return redirect(url_for('home'))
 
 
-@SmartSplitApp.route('/register', methods=["GET", "POST"])
+@SmartSplitApp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
