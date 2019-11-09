@@ -29,7 +29,7 @@ def login():
             next_page = url_for('home')
 
         return redirect(next_page)
-    return render_template('login.html',title = 'Log in', form=form)
+    return render_template('login.html', title='Log in', form=form)
 
 
 @SmartSplitApp.route("/logout")
@@ -50,21 +50,29 @@ def register():
         db.session.commit()
         flash('User successfully registered')
         return redirect(url_for('login'))
-    return render_template('register.html', title = 'Register', form=form)
+    return render_template('register.html', title='Register', form=form)
 
 
 @SmartSplitApp.route('/editCredentials', methods=["GET", "POST"])
 @login_required
 def editCredentials():
-    form = EditCredsForm(request.form)
-    if request.method == 'POST'and form.validate():
-        user = User(form.newUsername.data, form.newPassword)
+    # form = EditCredsForm(request.form)
+    # if request.method == 'POST'and form.validate():
+    #     user = User(form.newUsername.data, form.newPassword)
+    #     db.session.add(user)
+    #     flash('Credentials successfully edited')
+    #     return redirect(url_for('/home'))
+    if current_user.is_authenticated:
+        return redirect(url_for('login'))
+    form = EditCredsForm()
+    if form.validate_on_submit():
+        user = current_user
+        user.set_password(form.newPassword.data)
         db.session.add(user)
+        db.session.commit()
         flash('Credentials successfully edited')
         return redirect(url_for('/home'))
-    # if form.validate_on_submit():
-    #     flash('Credentials successfully edited')
-    return render_template('editCredentails.html', form=form)
+    return render_template('editCredentials.html', title='Edit Credentials', form=form)
 
 
 @SmartSplitApp.route('/evensplit', methods=['GET', 'POST'])
