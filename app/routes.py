@@ -29,7 +29,7 @@ def login():
             next_page = url_for('home')
 
         return redirect(next_page)
-    return render_template('login.html', title='Log in', form=form)
+    return render_template('LogIn.html', title='Log in', form=form)
 
 
 @SmartSplitApp.route("/logout")

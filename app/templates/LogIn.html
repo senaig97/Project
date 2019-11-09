@@ -1,9 +1,9 @@
 <html>
-<head>
-      <title>Login</title>
+  <head>
+    <title>Login</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
 body {
 font-family: Arial, Helvetica, sans-serif;
 background-color: AliceBlue;
@@ -34,34 +34,49 @@ button:hover {
   opacity: 0.7;
   }
 }
-</style>
-</head>
-<body>
+    </style>
+  </head>
 
-<h2>Login Page</h2>
+  <body>
 
-<form action="" method="post">
+    <h2>Login Page</h2>
 
-  <div class="container">
-    <a href="http://127.0.0.1:5000/register">New member? Create an account.</a>
-    <br><br>
-    <label for="uname"><b>Username:</b></label>
-    <br>
-    <input type="username" placeholder="Enter Username" name="username" value="{{
-          request.form.username }}">
-    <br><br>
-    <label for="psw"><b>Password:</b></label>
-    <br>
-    <input type="password" placeholder="Enter Password" name="password" value="{{
-          request.form.username }}">
-    <br>
-    <button type="submit">Login</button>
-    <br>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
+    <form action="" method="post">
 
+      <div class="container">
+        <a href="http://127.0.0.1:5000/register">New member? Create an account.</a>
+        <br><br>
+        <label for="uname"><b>Username:</b></label>
+        <br>
+          <input type="username" placeholder="Enter Username" name="username" value="{{
+            request.form.username }}">
+        <br><br>
+        <label for="psw"><b>Password:</b></label>
+        <br>
+          <input type="password" placeholder="Enter Password" name="password" value="{{
+            request.form.username }}">
+        <br>
+        <button type="submit">Login</button>
+        <br>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+    </form>
 
-</body>
+<!--    <form action="" method="post" novalidate>-->
+<!--        {{ form.hidden_tag() }}-->
+<!--        <p>-->
+<!--            {{ form.username.label }}<br>-->
+<!--            {{ form.username(size=32) }}-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            {{ form.password.label }}<br>-->
+<!--            {{ form.password(size=32) }}-->
+<!--        </p>-->
+<!--        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>-->
+<!--        <p>{{ form.submit() }}</p>-->
+<!--         <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>-->
+<!--    </form>-->
+  </body>
 </html>
