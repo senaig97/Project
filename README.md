@@ -33,9 +33,11 @@ Examples:
 
 1. **Register** : Uses the files app.db which is the database file to store credential information. The python files used to run it include init.py and forms.py 
 
-2. **Login** : Python files required: config.py, run.py, forms.py . The lofin page then navigates to main homepage.
+2. **Login** : Python files required: config.py, run.py, forms.py . The login page then navigates to main homepage.
 
 3. **Logout** : Button takes us back to the home page. 
+
+4. **Edit Credentials** : Allows user to change their password. Redirects user to login screen when new password is submitted.
 
 OTHER FEATURES IN PROGRESS.
 
