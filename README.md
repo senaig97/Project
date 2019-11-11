@@ -37,7 +37,7 @@ Examples:
 
 3. **Logout** : Button takes us back to the home page. 
 
-4. **Edit Credentials** : Allows user to change their password. Redirects user to login screen when new password is submitted.
+4. **Edit Credentials** : Allows user to change their password. Requires a user to have already been logged in. If not already logged in, redirects user to login screen. Else, redirects user to home screen when new password is submitted.
 
 OTHER FEATURES IN PROGRESS.
 
