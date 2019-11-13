@@ -59,13 +59,14 @@ def editCredentials():
     # if current_user.is_authenticated:
     #     return redirect(url_for('home'))
     form = EditCredsForm()
-    if form.validate_on_submit():
-        user = current_user
-        user.set_password(form.newPassword.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Credentials successfully edited')
-        return redirect(url_for('login'))
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = current_user
+            user.set_password(form.newPassword.data)
+            db.session.add(user)
+            db.session.commit()
+            flash('Credentials successfully edited')
+            return redirect(url_for('login'))
     return render_template('editCredentials.html', title='Edit Credentials', form=form)
 
 
