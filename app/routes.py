@@ -56,28 +56,23 @@ def register():
 @SmartSplitApp.route('/editCredentials', methods=["GET", "POST"])
 @login_required
 def editCredentials():
-    # form = EditCredsForm(request.form)
-    # if request.method == 'POST'and form.validate():
-    #     user = User(form.newUsername.data, form.newPassword)
-    #     db.session.add(user)
-    #     flash('Credentials successfully edited')
-    #     return redirect(url_for('/home'))
-    if current_user.is_authenticated:
-        return redirect(url_for('login'))
     form = EditCredsForm()
-    if form.validate_on_submit():
-        user = current_user
-        user.set_password(form.newPassword.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Credentials successfully edited')
-        return redirect(url_for('/home'))
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = User.query.filter_by(id=current_user.id).first()
+            user.set_password(form.newPassword.data)
+            db.session.add(user)
+            db.session.commit()
+            flash('Credentials successfully edited')
+            return redirect(url_for('login'))
     return render_template('editCredentials.html', title='Edit Credentials', form=form)
 
 
 @SmartSplitApp.route('/evensplit', methods=['GET', 'POST'])
 def evensplit():
-    form = SplitForm()
-    if form.validate_on_submit():
-        form.splitbill.data = form.cost.data / form.people.data
+    form = SplitForm(request.form)
+    if form.validate_on_submit() and request.method == 'POST':
+        a = form.amount.data
+        p = form.people.data
+        s = a // p
     return render_template('evensplit.html', form=form)
