@@ -70,12 +70,18 @@ def editCredentials():
 
 @SmartSplitApp.route('/evensplit', methods=['GET', 'POST'])
 def evensplit():
-    form = SplitForm(request.form)
+    form = SplitForm()
+    print(form.validate_on_submit())
+    print(form.errors)
+    print(form.amount.data, form.people.data)
     if form.validate_on_submit() and request.method == 'POST':
         a = form.amount.data
         p = form.people.data
         s = a // p
-    return render_template('evensplit.html', form=form)
+        print(s)
+        flash(s, 'result')
+    else:
+        return render_template('EvenSplit.html', form=form)
 
 @SmartSplitApp.route('/rating')
 def rating():
