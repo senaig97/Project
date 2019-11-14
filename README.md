@@ -14,7 +14,8 @@ Examples:
 2. Once logged in, the user gets the following options:
     * Even-Split
     * Custom-Split
-    * Look up history
+    * Edit credentials
+    * Log in
     * Log Out
     
 # Models:    
@@ -30,14 +31,21 @@ Examples:
     
     
 # How the app works:
+  ## Features:
 
-1. **Register** : Uses the files app.db which is the database file to store credential information. The python files used to run it include init.py and forms.py 
+1. **Homepage** : The homepage includes all the options available to user once they go to the website. The options are listed below as features as well.
 
-2. **Login** : Python files required: config.py, run.py, forms.py . The login page then navigates to main homepage.
+2. **Register** : Uses the database file to store credential information. Username, password, confirm password and submit fields are used. Once registered, the information is saved locally
 
-3. **Logout** : Button takes us back to the home page. 
+3. **Login** : Asks for the username and password. After clicking on submit/ login : redirects user to the hoempage.
 
-4. **Edit Credentials** : Allows user to change their password. Requires a user to have already been logged in. If not already logged in, redirects user to login screen. Else, redirects user to home screen when new password is submitted.
+4. **Logout** : Logs the user out. The user still stays on the homepage but is not logged into their account anymore.
+
+5. **Edit Credentials** : Allows user to change their password. Requires a user to have already been logged in. If not already logged in, redirects user to login screen. Else, redirects user to home screen when new password is submitted.
+
+6. **CSS** : The web pages are styled and designed in their respective html files themselves to make it.
+
+7. **Rating** : The link helps get feedback from the user. It directs users to a page where they can rate the app accordingly.
 
 OTHER FEATURES IN PROGRESS.
 
