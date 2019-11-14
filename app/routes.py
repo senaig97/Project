@@ -76,3 +76,7 @@ def evensplit():
         p = form.people.data
         s = a // p
     return render_template('evensplit.html', form=form)
+
+@SmartSplitApp.route('/rating')
+def rating():
+    return render_template('rating.html')
