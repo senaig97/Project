@@ -61,8 +61,9 @@ def editCredentials():
     form = EditCredsForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            user = current_user
-            user.set_password(form.newPassword.data)
+            user = User.query.filter_by(username=current_user.username.data).first()
+            if user.check_password(user.password.data):
+                user.set_password(form.newPassword.data)
             db.session.add(user)
             db.session.commit()
             flash('Credentials successfully edited')
