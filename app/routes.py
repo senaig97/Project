@@ -56,8 +56,6 @@ def register():
 @SmartSplitApp.route('/editCredentials', methods=["GET", "POST"])
 @login_required
 def editCredentials():
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('home'))
     form = EditCredsForm()
     if request.method == 'POST':
         if form.validate_on_submit():
