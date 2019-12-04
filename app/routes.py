@@ -88,8 +88,23 @@ def evensplit():
         if form.validate_on_submit():
             number = float(form.amount.data)
             divide_by = float(form.people.data)
-            result = number / divide_by
+            result = str(number / divide_by)
+            print(result)
     return render_template('EvenSplit.html', title='Even Split', form=form, result=result)
+
+@SmartSplitApp.route('/evensplit2', methods=['POST', 'GET'])
+def evensplit2():
+    if request.method == 'POST':
+        cst = float(request.form['cost'])
+        ppl = float(request.form['people'])
+        if ppl == 0:
+            result = 'Cannot divide by zero'
+        else:
+            result = str(cst/ppl)
+        return render_template('evensplit2.html', result=result)
+    if request.method == 'GET':
+        result = 'undefined'
+        return render_template('evensplit2.html', result=result)
 
 @SmartSplitApp.route('/rating')
 def rating():
