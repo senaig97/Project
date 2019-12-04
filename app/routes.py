@@ -86,3 +86,11 @@ def evensplit():
 @SmartSplitApp.route('/rating')
 def rating():
     return render_template('rating.html')
+
+@SmartSplitApp.route('/survey')
+def survey():
+    form = SurveyForm(request.form)
+    if form.validate_on_submit() and request.method == 'POST':
+        flash('Thank you for taking our survey, your feedback is appreciated')
+        return redirect(url_for('home'))
+    return render_template('survey.html', form = form)
