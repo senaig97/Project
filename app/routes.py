@@ -1,6 +1,6 @@
 from app import SmartSplitApp, db
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm
+from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm, SurveyForm
 from app.models import User
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
