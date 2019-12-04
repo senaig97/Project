@@ -117,3 +117,8 @@ def survey():
         flash('Thank you for taking our survey, your feedback is appreciated')
         return redirect(url_for('home'))
     return render_template('survey.html', form = form)
+
+
+@SmartSplitApp.route('/aboutUs')
+def aboutUs():
+    return render_template('AboutUs.html')
