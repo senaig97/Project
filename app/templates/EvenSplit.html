@@ -84,7 +84,7 @@
 <!--            {% endif %}-->
 <!--        {% endwith %}-->
         {% if result %}
-            Amount each person pays: {{ result }}
+            Amount each person pays: {{ result.value() }}
         {% endif %}
     </div>
 </form>
