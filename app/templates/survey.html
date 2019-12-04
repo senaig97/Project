@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <script src="js/jquery-3.1.1.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+    <title>Optional Survey</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="jumbotron bg-info">Thank You For Filling Out The Survey Below</h1>
+
+        <div>
+          <form>
+
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input id="name" class="form-control" type="text" placeholder="Full Name here">
+          </div>
+
+          <div class="music">
+            <h5>What is your gender?</h5>
+            <div class="radio">
+              <label>
+                <input type="radio" name="gender" value="Male">
+                Male
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="gender" value="Female">
+                Female
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="gender" value="Other">
+                Other
+              </label>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <h5>Which features would you like to see added to the app?</h5>
+            <select class="form-control" id="features">
+              <option value="1">Add Friend</option>
+              <option value="2">Digital Payments Options</option>
+              <option value="3">Notification Alerts</option>
+              <option value="4">Save Split Payment</option>
+              <option value="5">Chat</option>
+            </select>
+          </div>
+
+          <div class="favorite">
+            <h5>Check off your 3 most favorite existing features:</h5>
+            <form action="demo_form.asp">
+              <input type="checkbox" name="feature" value="evensplit"> Even Split<br>
+              <input type="checkbox" name="feature" value="rating"> Rating<br>
+              <input type="checkbox" name="feature" value="Log In"> login<br>
+              <input type="checkbox" name="feature" value="Register"> Register<br>
+              <input type="checkbox" name="food" value="logout"> logout<br>
+              <input type="checkbox" name="food" value="CSS"> The design of the app<br>
+              <input type="checkbox" name="food" value="survey"> This Survey!<br>
+            </form>
+          </div>
+
+
+          <div class="control-group">
+            <div class="controls">
+                 {{ form.submit }}
+            </div>
+          </div>
+          </form>
+
+        </div>
+
+
+
+      </div>
+  </body>
+</html>
