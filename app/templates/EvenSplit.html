@@ -51,30 +51,41 @@
 <form>
     <div align="left">
         <form action="" method="POST">
-        {{ form.csrf_token }}
-            Total Cost: <br>
-            {{ form.amount }}<br>
+        {{ form.hidden_tag() }}
+<!--            Total Cost: <br>-->
+<!--            {{ form.amount }}<br>-->
 
-            # of People: <br>
-            {{ form.people }}<br>
+<!--            # of People: <br>-->
+<!--            {{ form.people }}<br>-->
 
-            <div class="control-group">
-                <div class="controls">
-                    {{ form.submit() }}
-                </div>
-            </div>
+<!--            <div class="control-group">-->
+<!--                <div class="controls">-->
+<!--                    {{ form.submit() }}-->
+<!--                </div>-->
+<!--            </div>-->
+
+            {{ form.amount.label }}<br>
+            {{ form.amount(size=32) }}<br>
+
+            {{ form.people.label }}<br>
+            {{ form.people(size=32) }}<br>
+
+            <p>{{ form.submit() }}</p>
 
         </form>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul class=flashes>
-                    {% for category, result in messages %}
-                        Amount each person pays:
-                        {{ message }} <br>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+<!--        {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--            {% if messages %}-->
+<!--                <ul class=flashes>-->
+<!--                    {% for category, result in messages %}-->
+<!--                        Amount each person pays:-->
+<!--                        {{ message }} <br>-->
+<!--                    {% endfor %}-->
+<!--                </ul>-->
+<!--            {% endif %}-->
+<!--        {% endwith %}-->
+        {% if result %}
+            Amount each person pays: {{ result.value() }}
+        {% endif %}
     </div>
 </form>
 

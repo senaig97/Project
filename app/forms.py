@@ -18,9 +18,9 @@ class EditCredsForm(FlaskForm):
 
 
 class SplitForm(FlaskForm):
-    amount = IntegerField('cost')
-    people = IntegerField('people', validators=[NumberRange(min=1)])
-    splitbill = IntegerField('splitbill')
+    amount = FloatField('Total Cost')
+    people = FloatField('# of people', validators=[NumberRange(min=1)])
+    # splitbill = IntegerField('splitbill')
     submit = SubmitField('Calculate')
 
 
