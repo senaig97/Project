@@ -106,6 +106,14 @@ def evensplit2():
         result = ' '
         return render_template('evensplit2.html', result=result)
 
+@SmartSplitApp.route('/history')
+def history():
+    transactions = [
+        {'total': '20', 'ppl': '2', 'split': '10'},
+        {'total': '50', 'ppl': '2', 'split': '25'}
+    ]
+    return render_template('History.html', transactions=transactions)
+
 @SmartSplitApp.route('/rating')
 def rating():
     return render_template('rating.html')
