@@ -1,111 +1,117 @@
 <html>
-  <head>
+<head>
     <title>Optional Survey</title>
     <style>
-   body {
-   font-family: Arial, Helvetica, sans-serif;
-   background-color: AliceBlue;
-   }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: AliceBlue;
+        }
 
-   h1 { color: blue;}
-   h2 { color: blue;}
+        h1 {
+            color: blue;
+        }
 
-   input[type=text], input[type=password], input[type=email] {
-     width: 50%;
-     padding: 12px 20px;
-     margin: 8px 0;
-     display: inline-block;
-     border: 1px solid gray;
-     box-sizing: border-box;
-   }
+        h2 {
+            color: blue;
+        }
 
-   button {
-     background-color: blue;
-     color: white;
-     padding: 14px 20px;
-     margin: 8px 0;
-     border: none;
-     cursor: pointer;
-     width: 20%;
-   }
+        input[type=text], input[type=password], input[type=email] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid gray;
+            box-sizing: border-box;
+        }
 
-   button:hover {
-     opacity: 0.7;
-     }
-   }
- </style>
-  </head>
+        button {
+            background-color: blue;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+        }
 
-  <body>
-    <div class="container">
-      <h1 class="jumbotron bg-info">Thank You For Filling Out The Survey Below</h1>
+        button:hover {
+            opacity: 0.7;
+        }
 
-        <div>
-          <form>
+        }
+    </style>
+</head>
 
-          <div class="form-group">
-            <label for="name">Your name</label>
-            <input id="name" class="form-control" type="text" placeholder="Full Name here">
-          </div>
+<body>
+<div class="container">
+    <h1 class="jumbotron bg-info">Thank You For Filling Out The Survey Below</h1>
 
-          <div class="music">
-            <h5>What is your gender?</h5>
-            <div class="radio">
-              <label>
-                <input type="radio" name="gender" value="Male">
-                Male
-              </label>
+    <div>
+        <form>
+
+            <div class="form-group">
+                <label for="name">Your name</label>
+                <input id="name" class="form-control" type="text" placeholder="Full Name here">
             </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="gender" value="Female">
-                Female
-              </label>
+
+            <div class="music">
+                <h5>What is your gender?</h5>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="Male">
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="Female">
+                        Female
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="Other">
+                        Other
+                    </label>
+                </div>
             </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="gender" value="Other">
-                Other
-              </label>
+
+            <div class="feature-item">
+                <h5>Which features would you like to see added to the app?</h5>
+                <select class="form-control" id="features">
+                    <option value="1">Add Friend</option>
+                    <option value="2">Digital Payments Options</option>
+                    <option value="3">Notification Alerts</option>
+                    <option value="4">Save Split Payment</option>
+                    <option value="5">Chat</option>
+                </select>
             </div>
-          </div>
 
-          <div class="feature-item">
-            <h5>Which features would you like to see added to the app?</h5>
-            <select class="form-control" id="features">
-              <option value="1">Add Friend</option>
-              <option value="2">Digital Payments Options</option>
-              <option value="3">Notification Alerts</option>
-              <option value="4">Save Split Payment</option>
-              <option value="5">Chat</option>
-            </select>
-          </div>
-
-          <div class="favorite">
-            <h5>Check off your 3 most favorite existing features:</h5>
-            <form action="demo_form.asp">
-              <input type="checkbox" name="feature" value="evensplit"> Even Split<br>
-              <input type="checkbox" name="feature" value="rating"> Rating<br>
-              <input type="checkbox" name="feature" value="Log In"> login<br>
-              <input type="checkbox" name="feature" value="Register"> Register<br>
-              <input type="checkbox" name="feature" value="logout"> logout<br>
-              <input type="checkbox" name="feature" value="CSS"> The design of the app<br>
-              <input type="checkbox" name="feature" value="survey"> This Survey!<br>
-            </form>
-          </div>
-
-
-          <div class="control-group">
-            <div class="controls">
-                 {{ form.submit }}
+            <div class="favorite">
+                <h5>Check off your 3 most favorite existing features:</h5>
+                <form action="demo_form.asp">
+                    <input type="checkbox" name="feature" value="evensplit"> Even Split<br>
+                    <input type="checkbox" name="feature" value="rating"> Rating<br>
+                    <input type="checkbox" name="feature" value="Log In"> login<br>
+                    <input type="checkbox" name="feature" value="Register"> Register<br>
+                    <input type="checkbox" name="feature" value="logout"> logout<br>
+                    <input type="checkbox" name="feature" value="CSS"> The design of the app<br>
+                    <input type="checkbox" name="feature" value="survey"> This Survey!<br>
+                </form>
             </div>
-          </div>
-          </form>
-
-        </div>
 
 
+            <div class="control-group">
+                <div class="controls">
+                    {{ form.submit }}
+                </div>
+            </div>
+            <br><br><a href="http://127.0.0.1:5000/home">Back</a>
+        </form>
 
-      </div>
-  </body>
+    </div>
+
+
+</div>
+</body>
 </html>
