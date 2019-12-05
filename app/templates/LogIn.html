@@ -1,41 +1,45 @@
 <html>
-  <head>
+<head>
     <title>Login</title>
 
     <style>
-body {
-font-family: Arial, Helvetica, sans-serif;
-background-color: AliceBlue;
-}
-h1 { color: blue;}
-form {
-  width: 50%;
-  padding: 12px 10px;
-  margin: 8px 0;
-  display: inline-block;
-  box-sizing: border-box;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(to top, #89f7fe 0%, #fdfbfb 100%);
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        form {
+            width: 50%;
+            padding: 12px 10px;
+            margin: 8px 0;
+            display: inline-block;
+            box-sizing: border-box;
+        }
 
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <h1>Login</h1>
+<h1>Login</h1>
 
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-        <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-    </form>
-  </body>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}
+    </p>
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}
+    </p>
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p>{{ form.submit() }}</p>
+    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+</form>
+</body>
 </html>

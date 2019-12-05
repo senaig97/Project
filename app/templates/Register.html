@@ -1,100 +1,110 @@
 <html>
-    <head>
-        <title>Register</title>
-        <style>
-body {
-font-family: Arial, Helvetica, sans-serif;
-background-color: AliceBlue;
-}
-h1 { color: blue;}
-h2 { color: blue;}
-input[type=text], input[type=password], input[type=email] {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid gray;
-  box-sizing: border-box;
-}
-button {
-  background-color: blue;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 20%;
-}
-button:hover {
-  opacity: 0.7;
-  }
-}
-</style>
-    </head>
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(to top, #89f7fe 0%, #fdfbfb 100%);
+        }
 
-    <body>
-        <div align="left">
-            <h1>Register</h1>
+        h1 {
+            color: blue;
+        }
 
-            <form action="" method="post" class="form-horizontal">
-                {{ form.hidden_tag() }}
-                <div class="control-group">
-                    <div class="controls">
-                        {{ form.username.label }}<br>
-                        {{ form.username(size=32) }}<br>
-                        {% for error in form.username.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                        {% endfor %}
-<!--                    <input type="text" id="username" name="username" class="input-xlarge" placeholder="Enter Username" value="{{ request.form.username }}"required>-->
-                    </div>
-                 </div>
+        h2 {
+            color: blue;
+        }
 
-                <div class="control-group">
-                     <div class="controls">
-                        {{ form.password.label }}<br>
-                        {{ form.password(size=32) }}<br>
-                        {% for error in form.password.errors %}
-                            <span style="color: red;">[{{ error }}]</span>
-                        {% endfor %}
-    <!--                <input type="password" id="password" name="password" class="input-xlarge"-->
-    <!--                placeholder="Enter Password" value="{{ request.form.password }}"-->
-    <!--                required>-->
-                    </div>
-                </div>
+        input[type=text], input[type=password], input[type=email] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid gray;
+            box-sizing: border-box;
+        }
 
-                <div class="control-group">
-                    <div class="controls">
-                        {{ form.confirmPassword.label }}<br>
-                        {{ form.confirmPassword(size=32) }}<br>
-                        {% for error in form.confirmPassword.errors %}
-                            <span style="color: red;">[{{ error }}]</span>
-                        {% endfor %}
-    <!--                    <input type="password" id="confirmPassword" name="confirmPassword" class="input-xlarge"-->
-    <!--                    placeholder="Confirm Password" value="{{ request.form.confirmPassword }}"-->
-    <!--                    required>-->
-                    </div>
-                </div>
+        button {
+            background-color: blue;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+        }
 
-                <div class="control-group">
-                    <div class="controls">
-                        {{ form.email.label }}<br>
-                        {{ form.email(size=64) }}<br>
-                        {% for error in form.email.errors %}
-                            <span style="color: red;">[{{ error }}]</span>
-                        {% endfor %}
-    <!--                <input type="email" id="email" name="email" class="input-xlarge"-->
-    <!--                placeholder="Enter Email" value="{{ request.form.email }}"-->
-    <!--                required>-->
-                    </div>
-                </div>
+        button:hover {
+            opacity: 0.7;
+        }
 
-                <div class="control-group">
-                    <div class="controls">
-                        {{ form.submit() }}
-                    </div>
-                </div>
-            </form>
+        }
+    </style>
+</head>
+
+<body>
+<div align="left">
+    <h1>Register</h1>
+
+    <form action="" method="post" class="form-horizontal">
+        {{ form.hidden_tag() }}
+        <div class="control-group">
+            <div class="controls">
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <!--                    <input type="text" id="username" name="username" class="input-xlarge" placeholder="Enter Username" value="{{ request.form.username }}"required>-->
+            </div>
         </div>
 
-    </body>
+        <div class="control-group">
+            <div class="controls">
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}<br>
+                {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <!--                <input type="password" id="password" name="password" class="input-xlarge"-->
+                <!--                placeholder="Enter Password" value="{{ request.form.password }}"-->
+                <!--                required>-->
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                {{ form.confirmPassword.label }}<br>
+                {{ form.confirmPassword(size=32) }}<br>
+                {% for error in form.confirmPassword.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <!--                    <input type="password" id="confirmPassword" name="confirmPassword" class="input-xlarge"-->
+                <!--                    placeholder="Confirm Password" value="{{ request.form.confirmPassword }}"-->
+                <!--                    required>-->
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                {{ form.email.label }}<br>
+                {{ form.email(size=64) }}<br>
+                {% for error in form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <!--                <input type="email" id="email" name="email" class="input-xlarge"-->
+                <!--                placeholder="Enter Email" value="{{ request.form.email }}"-->
+                <!--                required>-->
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                {{ form.submit() }}
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
 </html>
