@@ -43,11 +43,13 @@
 </head>
 <body>
 <h1>
-    <div align="center">Welcome to Smartsplit!</div>
+    <div align="center">SmartSplit</div>
 </h1>
-<h2>
-    <div align="center">Home</div>
-</h2>
+{% if current_user.is_authenticated %}
+    <h2>
+        <div align="center">Welcome, {{ current_user.username }}</div>
+    </h2>
+{% endif %}
 
 
 <div align="center">
@@ -63,7 +65,6 @@
     <a href="http://127.0.0.1:5000/rating">Rate Us</a> |
     <a href="http://127.0.0.1:5000/survey">Survey</a> |
     <a href="http://127.0.0.1:5000/aboutUs">About Us</a></div>
-
 
 
 </body>
