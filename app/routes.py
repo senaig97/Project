@@ -1,7 +1,7 @@
 from app import SmartSplitApp, db
 from flask import render_template, flash, redirect, url_for, request
 from app.forms import EditCredsForm, LoginForm, SplitForm, RegistrationForm, SurveyForm
-from app.models import User
+from app.models import User, transactions, Transaction
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 
@@ -101,6 +101,7 @@ def evensplit2():
             result = 'Cannot divide by zero'
         else:
             result = "$" + str(cst/ppl)
+            transactions.append(Transaction(cst, ppl, cst/ppl))
         return render_template('evensplit2.html', result=result)
     if request.method == 'GET':
         result = ' '
@@ -108,10 +109,6 @@ def evensplit2():
 
 @SmartSplitApp.route('/history')
 def history():
-    transactions = [
-        {'total': '20', 'ppl': '2', 'split': '10'},
-        {'total': '50', 'ppl': '2', 'split': '25'}
-    ]
     return render_template('History.html', transactions=transactions)
 
 @SmartSplitApp.route('/rating')
