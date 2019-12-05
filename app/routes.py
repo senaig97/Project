@@ -100,10 +100,10 @@ def evensplit2():
         if ppl == 0:
             result = 'Cannot divide by zero'
         else:
-            result = str(cst/ppl)
+            result = "$" + str(cst/ppl)
         return render_template('evensplit2.html', result=result)
     if request.method == 'GET':
-        result = 'undefined'
+        result = ' '
         return render_template('evensplit2.html', result=result)
 
 @SmartSplitApp.route('/rating')
