@@ -12,7 +12,6 @@ class LoginForm(FlaskForm):
 
 
 class EditCredsForm(FlaskForm):
-    # newUsername = StringField('New Username')
     newPassword = PasswordField('New Password', validators=[DataRequired()])
     submit = SubmitField('Confirm')
 
@@ -20,7 +19,6 @@ class EditCredsForm(FlaskForm):
 class SplitForm(FlaskForm):
     amount = FloatField('Total Cost')
     people = FloatField('# of people', validators=[NumberRange(min=1)])
-    # splitbill = IntegerField('splitbill')
     submit = SubmitField('Calculate')
 
 
