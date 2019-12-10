@@ -11,6 +11,7 @@ Welcome to Smart-Split's documentation!
    :caption: Contents:
 
    installation
+   tutorial
    functions
 
 
