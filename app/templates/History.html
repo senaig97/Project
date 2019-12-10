@@ -52,7 +52,7 @@
 
     {% for t in transactions %}
         <p>
-            Total Cost: ${{ t.total }} | # People: {{ t.people }} | Split Cost: ${{ t.split }}
+            <b>{{ t.user }}</b> | Total Cost: ${{ t.total }} | # People: {{ t.people }} | Split Cost: ${{ t.split }} | {{ t.comment }}
         </p>
     {% endfor %}
 
