@@ -35,6 +35,12 @@ def db(app_context):
     from app import db
     db.create_all()
 
+    # Creating a test user
+    user = User(username='testificate', email='testificate@vilager.com')
+    user.set_password('password')
+    db.session.add(user)
+    db.session.commit()
+
     yield db
 
     db.drop_all()
