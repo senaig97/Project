@@ -17,7 +17,7 @@ def home():
 @SmartSplitApp.route("/login", methods=["GET", "POST"])
 def login():
     """Log in page for SmartSplit. Asks for the username and password. After clicking on submit/ login : redirects
-    user to the hoempage. """
+    user to the homepage. """
     if current_user.is_authenticated:
         return redirect(url_for('home'))
 
