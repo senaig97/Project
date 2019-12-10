@@ -13,6 +13,7 @@ class LoginForm(FlaskForm):
 
 class EditCredsForm(FlaskForm):
     newPassword = PasswordField('New Password', validators=[DataRequired()])
+    confirmPassword = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('newPassword')])
     submit = SubmitField('Confirm')
 
 
