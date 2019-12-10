@@ -1,3 +1,6 @@
-from app import SmartSplitApp
+from app import create_app
 
-SmartSplitApp.run()
+app = create_app()
+
+if __name__ == "__main__":
+    app.run(debug=True)
