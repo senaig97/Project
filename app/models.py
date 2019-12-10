@@ -20,10 +20,12 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
 class Transaction:
-    def __init__(self, total, people,  split):
+    def __init__(self, total, people, split, user, comment):
         self.total = str(total)
         self.people = str(people)
         self.split = str(split)
+        self.user = user
+        self.comment = comment
 
 @login.user_loader
 def load_user(id):
