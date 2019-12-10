@@ -18,7 +18,7 @@ def test_get_login_page(client):
 
 
 def test_valid_register(client, db):
-    response = client.post('/signup',
+    response = client.post('/register',
                            data=dict(username='testing', email='testing@testing.com', password='testing',
                                      confirm='testing'),
                            follow_redirects=True)
@@ -27,10 +27,22 @@ def test_valid_register(client, db):
     assert b'Hi !' in response.data
     assert b'Log out' in response.data
 
+
 def test_change_password(client):
     client.get('/register', follow_redirects=True)
     client.register('foo fighter', 'Foo', 'Foo', 'foofighter@foo.com')
-    response = client.post('/password_change', data=dict(password='Fighter'), follow_redirects=True)
+    response = client.post('/editCredentials', data=dict(password='Fighter'), follow_redirects=True)
     assert response.status_code == 200
     # self.assertIn(b'Password has been updated!', response.data)
     # self.assertIn(b'User Profile', response.data)
+
+
+def test_authorized_links(client):
+    response = client.post('/register',
+                           data=dict(username='testificate', email='testificate@villager.com', password='testing',
+                                     confirm='testing'),
+                           follow_redirects=True)
+    assert b'Log Out' in response.data
+    assert b'Edit Credentials' in response.data
+    assert b'Even Split' in response.data
+    assert b'History' in response.data

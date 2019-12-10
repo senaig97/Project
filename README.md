@@ -60,11 +60,12 @@ Examples:
 # Unit Tests
 
 The unit tests can be located at the following link: https://github.com/senaig97/Project/tree/master/app/tests
+
 To run the unit tests, install pytest by running:
 ```
 pip install pytest
 ```
-Then run the following commmand in the base directory:
+Then run the following command in the base directory:
 ```
 pytest
 ```
