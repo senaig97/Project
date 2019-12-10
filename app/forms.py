@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, IntegerField, FloatField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, EqualTo, Email, ValidationError, NumberRange
 from app.models import User
+from flask_login import current_user
 
 
 class LoginForm(FlaskForm):
@@ -14,6 +15,10 @@ class LoginForm(FlaskForm):
 class EditCredsForm(FlaskForm):
     newPassword = PasswordField('New Password', validators=[DataRequired()])
     submit = SubmitField('Confirm')
+
+    def validate_password(self, newPassword):
+        if not current_user.check_password(newPassword.data):
+            raise ValidationError("Please use a new password.")
 
 
 class SplitForm(FlaskForm):
