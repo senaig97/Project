@@ -43,11 +43,17 @@ Examples:
 
 5. **Edit Credentials** : Allows user to change their password. Requires a user to have already been logged in. If not already logged in, redirects user to login screen. Else, redirects user to home screen when new password is submitted.
 
-6. **CSS** : The web pages are styled and designed in their respective html files themselves to make it.
+6. **Even Split** : Basic split option. User inputs total cost, number of people involved, and a comment. Shows the split cost as total cost divided by number of people. Posts the transaction w/ username, total cost, # people, and comment on the History page.
 
-7. **Rating** : The link helps get feedback from the user. It directs users to a page where they can rate the app accordingly.
+7. **Transaction History** : Displays transactions in order of username, total cost, # people, and comment.
 
-OTHER FEATURES IN PROGRESS.
+8. **Survey** : Presents a survey to be filled out by the user.
+
+9. **Rating** : The link helps get feedback from the user. It directs users to a page where they can rate the app accordingly.
+
+12. **About Us** : Displays additional information about the site.
+
+11. **CSS** : The web pages are styled and designed in their respective html files themselves to make it.
 
 
     
