@@ -56,19 +56,15 @@ Examples:
 11. **CSS** : The web pages are styled and designed in their respective html files themselves to make it.
 
 
-    
 
-    
+# Unit Tests
 
-
-
-
-
-
-
-
-
-
-
-
- 
+The unit tests can be located at the following link: https://github.com/senaig97/Project/tree/master/app/tests
+To run the unit tests, install pytest by running:
+```
+pip install pytest
+```
+Then run the following commmand in the base directory:
+```
+pytest
+```
