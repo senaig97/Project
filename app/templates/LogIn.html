@@ -38,6 +38,15 @@
         {{ form.password(size=32) }}
     </p>
     <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </p>
     <p>{{ form.submit() }}</p>
     <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
 </form>

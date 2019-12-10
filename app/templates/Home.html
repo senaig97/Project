@@ -65,7 +65,18 @@
     {% endif %}
     <a href="http://127.0.0.1:5000/rating">Rate Us</a> |
     <a href="http://127.0.0.1:5000/survey">Survey</a> |
-    <a href="http://127.0.0.1:5000/aboutUs">About Us</a></div>
+    <a href="http://127.0.0.1:5000/aboutUs">About Us</a>
+</div>
+
+<div align="center"><br>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
 
 
 </body>
