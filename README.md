@@ -69,3 +69,8 @@ Then run the following command in the base directory:
 ```
 pytest
 ```
+
+
+# Sphinx Documentation
+
+Sphinx Documentation can be found at the following link: https://github.com/senaig97/Project/blob/master/docs/build/html/index.html
