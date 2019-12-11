@@ -44,11 +44,10 @@
 
 <body>
 <div class="container">
-    <h1 class="jumbotron bg-info">Thank You For Filling Out The Survey Below</h1>
-
+    <h1 class="jumbotron bg-info">Site Survey</h1>
     <div>
         <form>
-
+            {{ form.hidden_tag() }}
             <div class="form-group">
                 <label for="name">Your name</label>
                 <input id="name" class="form-control" type="text" placeholder="Full Name here">
@@ -92,22 +91,23 @@
                 <form action="demo_form.asp">
                     <input type="checkbox" name="feature" value="evensplit"> Even Split<br>
                     <input type="checkbox" name="feature" value="rating"> Rating<br>
-                    <input type="checkbox" name="feature" value="Log In"> login<br>
+                    <input type="checkbox" name="feature" value="Log In"> Login<br>
                     <input type="checkbox" name="feature" value="Register"> Register<br>
-                    <input type="checkbox" name="feature" value="logout"> logout<br>
-                    <input type="checkbox" name="feature" value="CSS"> The design of the app<br>
+                    <input type="checkbox" name="feature" value="logout"> Logout<br>
+                    <input type="checkbox" name="feature" value="CSS"> Design<br>
                     <input type="checkbox" name="feature" value="survey"> This Survey!<br>
                 </form>
             </div>
-
+        </form>
 
             <div class="control-group">
                 <div class="controls">
-                    {{ form.submit }}
+                    <form method="POST">
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
             </div>
             <br><br><a href="http://127.0.0.1:5000/home">Back</a>
-        </form>
 
     </div>
 

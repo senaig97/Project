@@ -105,12 +105,12 @@ def rating():
     """The link helps get feedback from the user. It directs users to a page where they can rate the app accordingly."""
     return render_template('rating.html')
 
-@SmartSplitApp.route('/survey')
+@SmartSplitApp.route('/survey', methods=['POST', 'GET'])
 def survey():
     """Presents a survey to be filled out by the user."""
     form = SurveyForm(request.form)
-    if form.validate_on_submit() and request.method == 'POST':
-        flash('Thank you for taking our survey, your feedback is appreciated')
+    if request.method == 'POST':
+        flash('Thank you for taking our survey, your feedback is appreciated!')
         return redirect(url_for('home'))
     return render_template('survey.html', form = form)
 
