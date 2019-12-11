@@ -1,5 +1,5 @@
 import pytest
-from app.models import User
+from app.models import User, transactions, Transaction
 
 
 @pytest.fixture(scope='module')
@@ -14,24 +14,17 @@ def test_add_user_to_db(db):
 def test_nonauth_homepage(client):
     response = client.get('/home')
     assert response.status_code == 200
-    assert b'<a href="http://127.0.0.1:5000/login">Log In</a>' in response.data
+    assert b'Log In' in response.data
 
 
 def test_auth_homepage(client):
-    response = client.post('/register', data=dict(username='testificate', password='password',
-                                                  confirmPassword='password', email='testificate@hmm.com'),
-                           follow_redirects=True)
-    assert response.status_code == 200
-
-    # client.get('/register', follow_redirects=True)
-    # client.register('testificate', 'password', 'password', 'testificate@hmm.com')
-
-    response = client.post('/login', data=dict(username='testificate', password='password'), follow_redirects=True)
-    assert response.status_code == 200
-
+    client.post('/login',
+                data=dict(username='testificate', password='password'),
+                follow_redirects=True)
     response = client.get('/home')
     assert response.status_code == 200
-    assert b'<a href="http://127.0.0.1:5000/logout">Log Out</a>' in response.data
+
+    assert b'Log Out' in response.data
 
 
 def test_get_login_page(client):
@@ -39,6 +32,24 @@ def test_get_login_page(client):
     assert response.status_code == 200
     assert b'Username' in response.data
     assert b'Password' in response.data
+
+
+def test_get_survey(client):
+    response = client.get('/survey')
+    assert response.status_code == 200
+    assert b'Site Survey' in response.data
+
+
+def test_get_evensplit(client):
+    response = client.get('/evensplit')
+    assert response.status_code == 200
+    assert b'Total Cost' in response.data
+    assert b'Number of People' in response.data
+
+
+def test_nonauth_block(client):
+    response = client.get('/editCredentials', follow_redirects=True)
+    assert b'Login' in response.data
 
 
 def test_valid_register(client, db):
@@ -59,3 +70,9 @@ def test_change_password(client, db):
     assert response.status_code == 200
     assert b'Password' in response.data
     # self.assertIn(b'Password has been updated!', response.data)
+
+
+def test_history(client, db):
+    transactions.append(Transaction('100', '5', '20', 'tester', 'test comment'))
+    response = client.get('/history')
+    assert b'tester' in response.data
